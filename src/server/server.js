@@ -91,9 +91,7 @@ app.get("/favorite", verifyToken, (req, res) => {
   });
 });
 
-app.post("/book", (req, res) => {
-  console.log(req.body.name);
-  console.log(req.body.author);
+app.post("/book", verifyToken, (req, res) => {
   if (!req.body.name || !req.body.author) {
     res.status(400).send({ message: "Invalid Book" });
   } else {
